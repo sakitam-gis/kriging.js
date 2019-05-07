@@ -239,7 +239,7 @@ function variance(
 
 // Gridded matrices or contour paths
 function grid(
-  polygons: number[][],
+  polygons: number[][][],
   variogram: {
     t: number[];
     n: number;
@@ -336,28 +336,28 @@ function plot(
 ) {
   // Clear screen
   const ctx = canvas.getContext('2d');
+  const { data, zlim, width } = grid;
   if (ctx) {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     // Starting boundaries
-    const range = [xlim[1] - xlim[0], ylim[1] - ylim[0], grid.zlim[1] - grid.zlim[0]];
+    const range = [xlim[1] - xlim[0], ylim[1] - ylim[0], zlim[1] - zlim[0]];
     let i;
     let j;
     let x;
     let y;
     let z;
-    const n = grid.data.length;
-    const m = grid.data[0].length;
+    const n = data.length;
+    const m = data[0].length;
     // @ts-ignore
-    const wx = Math.ceil(grid.width * canvas.width / (xlim[1] - xlim[0]));
+    const wx = Math.ceil(width * canvas.width / (xlim[1] - xlim[0]));
     // @ts-ignore
-    const wy = Math.ceil(grid.width * canvas.height / (ylim[1] - ylim[0]));
+    const wy = Math.ceil(width * canvas.height / (ylim[1] - ylim[0]));
     for (i = 0; i < n; i++) {
       for (j = 0; j < m; j++) {
-        // eslint-disable-next-line no-continue
-        if (grid.data[i][j] === undefined) continue;
-        x = canvas.width * (i * grid.width + grid.xlim[0] - xlim[0]) / range[0];
-        y = canvas.height * (1 - (j * grid.width + grid.ylim[0] - ylim[0]) / range[1]);
-        z = (grid.data[i][j] - grid.zlim[0]) / range[2];
+        if (data[i][j] === undefined) continue;
+        x = canvas.width * (i * width + grid.xlim[0] - xlim[0]) / range[0];
+        y = canvas.height * (1 - (j * width + grid.ylim[0] - ylim[0]) / range[1]);
+        z = (data[i][j] - zlim[0]) / range[2];
         if (z < 0.0) z = 0.0;
         if (z > 1.0) z = 1.0;
         ctx.fillStyle = colors[Math.floor((colors.length - 1) * z)];
@@ -366,6 +366,14 @@ function plot(
     }
   }
 }
+
+export {
+  train,
+  predict,
+  variance,
+  grid,
+  plot,
+};
 
 export default {
   train,

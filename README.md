@@ -1,5 +1,28 @@
 kriging.js
-==========
+
+## Dev
+
+```bash
+git clone https://github.com/sakitam-gis/kriging.js
+npm install or yarn
+npm run dev
+npm run build
+```
+
+## Use
+
+```bash
+npm i @sakitam-gis/kriging
+
+# node
+const kriging = require('@sakitam-gis/kriging');
+
+# es
+import kriging from '@sakitam-gis/kriging';
+# or
+import { train, grid } from '@sakitam-gis/kriging';
+
+```
 
 **kriging.js** is a Javascript library providing spatial prediction and mapping capabilities via the ordinary kriging algorithm. 
 
@@ -42,7 +65,6 @@ Values can be predicted for new coordinate pairs by using the predict method in 
 
 Creating a Map
 --------------
-
 
 Variogram and Probability Model
 -------------------------------

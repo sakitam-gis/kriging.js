@@ -43,7 +43,7 @@ function rep(source: number, n: number): number[] {
   // return (new Array(n)).fill(source);
 }
 
-function pip(source: number[], x: number, y: number): boolean {
+function pip(source: any[], x: number, y: number): boolean {
   let i = 0;
   let j = source.length - 1;
   let c = false;
@@ -59,44 +59,65 @@ function pip(source: number[], x: number, y: number): boolean {
 
 // Matrix algebra
 function matrixDiag(c: number, n: number): number[] {
-  let i;
+  let i = 0;
   const Z = rep(0, n * n);
-  for (i = 0; i < n; i++) Z[i * n + i] = c;
+  for (; i < n; i++) {
+    Z[i * n + i] = c;
+  }
   return Z;
 }
 
 function matrixTranspose(X: any[], n: number, m: number): any[] {
   let i = 0;
-  let j = 0;
+  let j;
   const Z = Array(m * n);
-  for (; i < n; i++) for (; j < m; j++) Z[j * n + i] = X[i * m + j];
+  for (; i < n; i++) {
+    j = 0;
+    for (; j < m; j++) {
+      Z[j * n + i] = X[i * m + j];
+    }
+  }
   return Z;
 }
 
 function matrixScale(X: number[], c: number, n: number, m: number) {
   let i = 0;
-  let j = 0;
-  for (; i < n; i++) for (; j < m; j++) X[i * m + j] *= c;
+  let j;
+  for (; i < n; i++) {
+    j = 0;
+    for (; j < m; j++) {
+      X[i * m + j] *= c;
+    }
+  }
 }
 
 function matrixAdd(X: number[], Y: number[], n: number, m: number): number[] {
   let i = 0;
-  let j = 0;
+  let j;
   const Z = Array(n * m);
-  for (; i < n; i++) for (; j < m; j++) Z[i * m + j] = X[i * m + j] + Y[i * m + j];
+  for (; i < n; i++) {
+    j = 0;
+    for (; j < m; j++) {
+      Z[i * m + j] = X[i * m + j] + Y[i * m + j];
+    }
+  }
   return Z;
 }
 
 // Naive matrix multiplication
 function matrixMultiply(X: number[], Y: number[], n: number, m: number, p: number): number[] {
   let i = 0;
+  let j;
+  let k;
   const Z = Array(n * p);
   for (; i < n; i++) {
-    let j = 0;
+    j = 0;
     for (; j < p; j++) {
       Z[i * p + j] = 0;
-      let k = 0;
-      for (; k < m; k++) Z[i * p + j] += X[i * m + k] * Y[k * p + j];
+      k = 0;
+      for (; k < m; k++) {
+        Z[i * p + j] += X[i * m + k] * Y[k * p + j];
+      }
     }
   }
   return Z;

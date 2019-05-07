@@ -1,14 +1,10 @@
-import { train, grid } from '..';
+const fs = require('fs-extra');
+const kriging = require('.');
 
-fetch('csvjson.json', {
-  method: 'GET',
-})
-  .then((response) => {
-    return response.json();
-  })
-  // @ts-ignore
-  .then((res: any[]) => {
-    console.log(res);
+// With Promises:
+fs.readJson('./examples/csvjson.json')
+  .then(res => {
+    // console.log(res);
     const lngs = [];
     const lats = [];
     const values = [];
@@ -29,9 +25,9 @@ fetch('csvjson.json', {
     }
 
     console.time('train');
-    const variogram = train(values, lngs, lats, 'exponential', 0, 100);
+    const variogram = kriging.train(values, lngs, lats, 'exponential', 0, 100);
     console.timeEnd('train');
-    console.log(variogram);
+    // console.log(variogram);
 
     const mathGrid = true;
 
@@ -41,16 +37,16 @@ fetch('csvjson.json', {
         143.53648, 56.38334,
       ];
       console.time('grid');
-      const vgrid = grid([
+      const vgrid = kriging.grid([
         [
           [extent[0], extent[1]], [extent[0], extent[3]],
           [extent[2], extent[3]], [extent[2], extent[1]],
         ],
       ], variogram, 0.3986079500000001);
       console.timeEnd('grid');
-      console.log(vgrid);
+      // console.log(vgrid);
     }
   })
-  .catch((error) => {
-    console.error(error);
+  .catch(err => {
+    console.error(err)
   });
