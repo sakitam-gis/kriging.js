@@ -30,9 +30,10 @@ module.exports = {
       useTsconfigDeclarationDir: true,
     }),
     nodeResolve({
-      jsnext: true,
-      main: true,
-      browser: true
+      mainFields: ['module', 'main'], // Default: ['module', 'main']
+      browser: true,  // Default: false
+      extensions: [ '.mjs', '.js', '.json', '.node', 'jsx' ],  // Default: [ '.mjs', '.js', '.json', '.node' ]
+      preferBuiltins: true,  // Default: true
     }),
     cjs(),
   ],
