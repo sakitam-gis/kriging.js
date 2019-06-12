@@ -52,7 +52,7 @@ module.exports = function (config) {
           // we don't cover declaration or test files
           /\.(d|spec|test)\.ts/i,
           // we don't want to cover barrel files
-          // /index.ts/
+          /world.ts/
         ],
       },
       reports: {
