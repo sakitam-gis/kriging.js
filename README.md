@@ -1,5 +1,13 @@
 kriging.js
 
+[![Build Status](https://www.travis-ci.org/sakitam-gis/kriging.js.svg?branch=master)](https://www.travis-ci.org/sakitam-gis/kriging.js)
+[![codecov](https://codecov.io/gh/sakitam-gis/kriging.js/branch/master/graph/badge.svg)](https://codecov.io/gh/sakitam-gis/kriging.js)
+[![NPM downloads](https://img.shields.io/npm/dm/@sakitam-gis/kriging.svg)](https://npmjs.org/package/@sakitam-gis/kriging)
+![JS gzip size](http://img.badgesize.io/https://unpkg.com/@sakitam-gis/kriging/dist/kriging.js?compression=gzip&label=gzip%20size:%20JS)
+[![Npm package](https://img.shields.io/npm/v/@sakitam-gis/kriging.svg)](https://www.npmjs.org/package/@sakitam-gis/kriging)
+[![GitHub stars](https://img.shields.io/github/stars/sakitam-gis/kriging.js.svg)](https://github.com/sakitam-gis/kriging.js/stargazers)
+[![GitHub license](https://img.shields.io/github/license/sakitam-gis/kriging.js.svg)](https://github.com/sakitam-gis/kriging.js/blob/master/LICENSE)
+
 ## Dev
 
 ```bash
@@ -10,6 +18,15 @@ npm run build
 ```
 
 ## Use
+
+### CDN
+
+```bash
+https://unpkg.com/@sakitam-gis/kriging/dist/kriging.min.js
+https://unpkg.com/@sakitam-gis/kriging/dist/kriging.js
+```
+
+### PACKAGES
 
 ```bash
 npm i @sakitam-gis/kriging

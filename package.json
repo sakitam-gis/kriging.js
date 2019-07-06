@@ -23,7 +23,9 @@
     "dev": "rollup -wm -c build/rollup-dev-config.js",
     "demo": "rollup -wm -c build/rollup-demo-config.js",
     "build": "rollup -c build/rollup-prod-config.js",
+    "prepublishOnly": "npm run karma.single",
     "test": "node test.js",
+    "karma.single": "karma start karma.config.js --single-run",
     "karma.test": "karma start karma.config.js"
   },
   "peerDependencies": {},
